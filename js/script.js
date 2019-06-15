@@ -62,6 +62,10 @@ function scrollImages(forward){
 	if(currentRow < 0) {
 		currentRow = totalRows-1;
 	}
+	setRowPosition();
+}
+
+function setRowPosition() {
 	if (window.matchMedia("(orientation: portrait)").matches) {
 		let style = "top: calc(-" + currentRow + " * (100vh - 120px)); left: 0%";
 		mainImageContainer.setAttribute("style", style);
@@ -69,11 +73,14 @@ function scrollImages(forward){
 		let margin = -100 * currentRow;
 		let style = "top: 0%; left:" + margin + "%;";
 		mainImageContainer.setAttribute("style", style);
-	}	
+	}
 }
 
 createImageContainers();
 
+window.onresize = function(){ setRowPosition(); }
+
+// grabbed from stackoverflow
 function shuffle(array) {
 	var m = array.length, t, i;
 
