@@ -22,10 +22,14 @@ var images = [
 // shuffle images
 images = shuffle(images);
 
-const totalRows = Math.floor(images.length / 3);
+// get values for calculations
+const totalRows = Math.ceil(images.length / 3);
 var currentRow = 0;
+
+// main image container for reuse
 var mainImageContainer = document.getElementById("gallery_images");
 
+// initial function
 function createImageContainers() {
 	// get container for images
 	// create images with containers
@@ -55,7 +59,7 @@ function createImageContainers() {
 // calculate row position to scroll to
 function scrollImages(forward){
 	currentRow += forward ? 1 : -1;
-	if(currentRow > totalRows) {
+	if(currentRow >= totalRows) {
 		currentRow = 0;
 	}
 	if(currentRow < 0) {
@@ -76,13 +80,13 @@ function setScrollPosition() {
 	}
 }
 
-// initial function
+// initial function call
 createImageContainers();
 
 // refresh scroll position on screen orientation change
 window.onresize = function(){ setScrollPosition(); }
 
-// grabbed from stackoverflow
+// shuffle method from stackoverflow
 function shuffle(array) {
 	var m = array.length, t, i;
 
