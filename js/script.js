@@ -19,6 +19,7 @@ var images = [
 	{src:"images/road-free-stock-images.jpg", alt:"Straße"}
 ];
 
+// shuffle images
 images = shuffle(images);
 
 const totalRows = Math.floor(images.length / 3);
@@ -27,10 +28,8 @@ var mainImageContainer = document.getElementById("gallery_images");
 
 function createImageContainers() {
 	// get container for images
-	let row = -1;
 	// create images with containers
 	images.forEach(function(imgageData, index){
-		row += (index % 3) == 0 ? 1 : 0;
 		// container in flex element
 		let imageContainer = document.createElement("div");
 		imageContainer.setAttribute("class", "image_container");
@@ -39,7 +38,7 @@ function createImageContainers() {
 		verticalAlign.setAttribute("class", "image_alignment");
 		// image tag
 		let imageTag = document.createElement("img");		
-		imageTag.setAttribute("class", "image image_row_" + row);
+		imageTag.setAttribute("class", "image");
 		imageTag.setAttribute("src", imgageData.src);
 		imageTag.setAttribute("alt", imgageData.alt);
 		// add elements to dom
@@ -53,7 +52,7 @@ function createImageContainers() {
 	});
 }
 
-// calculate scrolling distance depending on screen orientation
+// calculate row position to scroll to
 function scrollImages(forward){
 	currentRow += forward ? 1 : -1;
 	if(currentRow > totalRows) {
@@ -62,10 +61,11 @@ function scrollImages(forward){
 	if(currentRow < 0) {
 		currentRow = totalRows-1;
 	}
-	setRowPosition();
+	setScrollPosition();
 }
 
-function setRowPosition() {
+// set scrolling distance depending on screen orientation
+function setScrollPosition() {
 	if (window.matchMedia("(orientation: portrait)").matches) {
 		let style = "top: calc(-" + currentRow + " * (100vh - 120px)); left: 0%";
 		mainImageContainer.setAttribute("style", style);
@@ -76,9 +76,11 @@ function setRowPosition() {
 	}
 }
 
+// initial function
 createImageContainers();
 
-window.onresize = function(){ setRowPosition(); }
+// refresh scroll position on screen orientation change
+window.onresize = function(){ setScrollPosition(); }
 
 // grabbed from stackoverflow
 function shuffle(array) {
