@@ -13,7 +13,8 @@ h1 {
 	font-family: 'Rock Salt', cursive;
 	font-size: 60px;
 	color: yellowgreen;
-	text-shadow: 7px 7px 15px #000;
+	text-shadow: 7px 7px 15px #000;	
+	margin-bottom: 10vh;
 }
 
 #button_container {
@@ -43,6 +44,7 @@ h1 {
 	background-size: cover;
 	height: 84vh;
 	padding-top: 16vh;
+	background-position: center top;
 }
 
 #gallery_overlay {
@@ -129,7 +131,16 @@ h1 {
 .gallery_button_text {
 	color: #FFF;
 	font-size: 24px;
-	font-weight: bold;		
+	font-weight: bold;
+	transition: all ease 0.15s;
+}
+
+#button_prev:active > .gallery_button_text {
+	margin-left: 5px;
+}
+
+#button_next:active > .gallery_button_text {
+	margin-left: -5px;
 }
 
 .gallery_button:hover, .close_gallery:hover {
@@ -147,6 +158,12 @@ h1 {
     padding: 10px 36px;
 	border-radius: 47px;
 	transition: all ease 0.6s;
+}
+
+#close_gallery:active {	
+	margin-top: -3px;
+	margin-left: -2px;
+	transition: all ease 0.15s;
 }
 
 #gallery_switch:checked + #gallery_overlay > #close_gallery{
@@ -168,12 +185,21 @@ h1 {
 	.gallery_button_text {
 		writing-mode: vertical-lr;
 	}
+	#button_prev:active > .gallery_button_text {
+		margin-top: 5px;
+		margin-left: 0px;
+	}
+	
+	#button_next:active > .gallery_button_text {
+		margin-top: -5px;
+		margin-left: 0px;
+	}
 	.image_container {
 		width: 100%;
 		height: calc(33.33vh - 80px);
 		padding: 20px;
 	}
-	#gallery_overlay {
+	#gallery_overlay {	
 		position: absolute;
 		top: 0vh;
 		left: -100%;
