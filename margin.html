@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>Bildergalerie</title>
+	<meta name="description" content="Bildergalerie">
+	<style>
+		#outer_container {
+			width: 50%;
+			height: 33vh;
+			margin: 33vh auto;
+			background-color: bisque;
+			overflow: hidden;
+		}
+
+		#flex_container {
+			display: flex;
+			flex-wrap: nowrap;
+			height: 100%;
+			position: relative;
+			left: 0%;
+		}
+
+		.flex_item_container {
+			height: calc(100% - 20px);
+			width: calc(33% - 20px);
+			padding: 10px;
+			flex-shrink: 0;
+		}
+
+		.flex_item {
+			height: 100%;
+			width: 100X;
+			background-color: brown; 
+		}
+
+	</style>
+</head>
+	<div id="outer_container">
+		<div id="flex_container">
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+			<div class="flex_item_container">
+				<div class="flex_item"></div>
+			</div>
+		</div>
+	</div>
+<body>
+
+</body>
+</html>

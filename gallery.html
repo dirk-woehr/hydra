@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<title>Bildergalerie</title>
+	<meta name="description" content="Bildergalerie">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet"> 
+</head>
+
+<body>
+	<div id="cover">
+		<h1>Bildergalerie</h1>
+		<div id="button_container">
+			<label for="gallery_switch" id="toggle_gallery">Starten</label>
+		</div>
+		<input type="checkbox" id="gallery_switch" name="gallery_switch"/>
+		<div id="gallery_overlay">
+			<div id="gallery_container">
+				<button class="gallery_button" onClick="scrollImages(false)">
+					<span class="gallery_button_text">&lt;</span>
+				</button>
+				<div id="images_wrapper">
+					<div id="gallery_images"></div>
+				</div>
+				<button class="gallery_button" onClick="scrollImages(true)">
+					<span class="gallery_button_text">&gt;</span>
+				</button>
+			</div>
+			<label for="gallery_switch" id="close_gallery">X</label>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>

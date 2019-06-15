@@ -1,0 +1,210 @@
+body, html {
+	margin: 0px;
+	padding: 0px;
+	background-color: forestgreen;
+}
+
+#gallery_switch {
+	display: none;
+}
+
+h1 {
+	text-align: center;
+	font-family: 'Rock Salt', cursive;
+	font-size: 60px;
+	color: yellowgreen;
+	text-shadow: 7px 7px 15px #000;
+}
+
+#button_container {
+	text-align: center;
+}
+
+#toggle_gallery {
+	display: inline-block;
+	text-align: center;
+	font-family: 'Rock Salt', cursive;
+	background-color: mediumvioletred;
+	padding: 15px 55px;
+	border-radius: 15px;
+	color:white;	
+	box-shadow: 7px 7px 15px #000;
+	font-size: 20px;
+}
+
+#toggle_gallery:active {	
+	margin-top: 5px;
+	box-shadow: 2px 2px 10px #000;	
+	transition: all ease 0.15s;
+}
+
+#cover {
+	background-image: url(../images/stuttgart.jpg);
+	background-size: cover;
+	height: 84vh;
+	padding-top: 16vh;
+}
+
+#gallery_overlay {
+	position: absolute;
+	top: -50vh;
+	left: 0;
+	width: 100%;
+	height: 33vh;
+	background-color: rgba(0,0,0,0.7);
+	transition: all ease 0.6s;
+	box-shadow: 10px 10px 15px;
+	opacity: 0;
+}
+
+#gallery_switch:checked + #gallery_overlay {
+	top: 33vh;
+	opacity: 1;
+}
+
+#gallery_container {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	width: 100%;
+	height: 33vh;
+}
+
+#images_wrapper {
+	width: calc(100% - 120px);
+	overflow: hidden;
+}
+
+#gallery_images {
+	display: flex;
+	resize: none;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	height: 33vh;	
+	transition: all ease 1s;
+	margin-top: 0vh;
+	margin-left: 0%;
+	position: relative;
+	left: 0%;
+	top: 0%;
+}
+
+.image_container {
+	width: 33.33%;
+	height: 33vh;	
+	transition: all ease 0.2s;
+	text-align: center;
+	flex-shrink: 0;
+}
+
+.image_container.zoom {	
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 9999;
+	background-color: rgba(0,0,0,0.7);
+}
+
+.image_alignment {
+	display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.image {
+	max-width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+
+.gallery_button {
+	width: 60px;
+	border: none;
+	background-color: rgba(0,0,0,0.7);
+	outline: none;
+}
+
+.gallery_button_text {
+	color: #FFF;
+	font-size: 24px;
+	font-weight: bold;		
+}
+
+.gallery_button:hover, .close_gallery:hover {
+	background-color: rgba(0,0,0,0.5);
+}
+
+#close_gallery {
+	position: fixed;
+	top: -100vh;
+	left: calc(50% - 40px);
+	background-color: rgba(0,0,0,0.7);
+	color: #FFF;
+	font-family: 'Rock Salt', cursive;
+	font-size: 30px;
+    padding: 10px 36px;
+	border-radius: 47px;
+	transition: all ease 0.6s;
+}
+
+#gallery_switch:checked + #gallery_overlay > #close_gallery{
+	top: 70vh;
+}
+
+@media (orientation: portrait) {
+	#gallery_container {
+		flex-direction: column;
+		width: 100%;
+		height: 100vh;
+		top:0%;
+		left:0%;
+	}
+	.gallery_button {
+		height: 60px;
+		width: 100%;
+	}
+	.gallery_button_text {
+		writing-mode: vertical-lr;
+	}
+	.image_container {
+		width: 100%;
+		height: calc(33.33vh - 80px);
+		padding: 20px;
+	}
+	#gallery_overlay {
+		position: absolute;
+		top: 0vh;
+		left: -100%;
+		width: 100%;
+		height: 100vh;
+		background-color: rgba(0,0,0,0.7);
+		transition: all ease 0.6s;
+		box-shadow: 0px 0px 0px;
+	}
+	
+	#gallery_switch:checked + #gallery_overlay {
+		left: 0vh;
+		top: 0px;
+	}
+
+	#gallery_images {
+		flex-direction: column;
+	}
+	#images_wrapper {
+		height: calc(100vh - 120px);
+		width: 100%;
+	}
+	#close_gallery {
+		position: fixed;
+		top: -100vh;
+		left: 25px;
+		font-family: 'Rock Salt', cursive;
+		background-color: #000;
+	}
+	
+	#gallery_switch:checked + #gallery_overlay > #close_gallery{
+		top: 75px;
+	}
+}
