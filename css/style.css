@@ -133,14 +133,19 @@ h1 {
 	font-size: 24px;
 	font-weight: bold;
 	transition: all ease 0.15s;
+	display: inline-block;
+	position: relative;
+	top:0;
+	left:0;
+	font-family: 'Rock Salt', cursive;
 }
 
 #button_prev:active > .gallery_button_text {
-	margin-left: 5px;
+	left: -3px;
 }
 
 #button_next:active > .gallery_button_text {
-	margin-left: -5px;
+	left: 3px;
 }
 
 .gallery_button:hover, .close_gallery:hover {
@@ -158,11 +163,11 @@ h1 {
     padding: 10px 36px;
 	border-radius: 47px;
 	transition: all ease 0.6s;
+	transform: scale(1);
 }
 
-#close_gallery:active {	
-	margin-top: -3px;
-	margin-left: -2px;
+#close_gallery:active {		
+	transform: scale(0.95);
 	transition: all ease 0.15s;
 }
 
@@ -186,13 +191,13 @@ h1 {
 		writing-mode: vertical-lr;
 	}
 	#button_prev:active > .gallery_button_text {
-		margin-top: 5px;
-		margin-left: 0px;
+		top: -4px;
+		left: 0px;
 	}
 	
 	#button_next:active > .gallery_button_text {
-		margin-top: -5px;
-		margin-left: 0px;
+		top: 4px;
+		left: 0px;
 	}
 	.image_container {
 		width: 100%;

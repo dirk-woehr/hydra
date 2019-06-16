@@ -23,8 +23,8 @@ var images = [
 images = shuffle(images);
 
 // get values for calculations
-const totalRows = Math.ceil(images.length / 3);
-var currentRow = 0;
+const totalScreens = Math.ceil(images.length / 3);
+var currentPosition = 0;
 
 // main image container for reuse
 var mainImageContainer = document.getElementById("gallery_images");
@@ -37,6 +37,10 @@ function createImageContainers() {
 		// container in flex element
 		let imageContainer = document.createElement("div");
 		imageContainer.setAttribute("class", "image_container");
+		// add event listener
+		imageContainer.addEventListener('click', function() {
+			this.classList.toggle('zoom');
+		});
 		// span for vertical alignment
 		let verticalAlign = document.createElement("span");
 		verticalAlign.setAttribute("class", "image_alignment");
@@ -49,21 +53,17 @@ function createImageContainers() {
 		imageContainer.appendChild(verticalAlign);
 		imageContainer.appendChild(imageTag);
 		mainImageContainer.appendChild(imageContainer);
-		// add event listener
-		imageContainer.addEventListener('click', function() {
-			this.classList.toggle('zoom');
-		});
 	});
 }
 
-// calculate row position to scroll to
+// calculate current position to scroll to
 function scrollImages(forward){
-	currentRow += forward ? 1 : -1;
-	if(currentRow >= totalRows) {
-		currentRow = 0;
+	currentPosition += forward ? 1 : -1;
+	if(currentPosition >= totalScreens) {
+		currentPosition = 0;
 	}
-	if(currentRow < 0) {
-		currentRow = totalRows-1;
+	if(currentPosition < 0) {
+		currentPosition = totalScreens-1;
 	}
 	setScrollPosition();
 }
@@ -71,10 +71,10 @@ function scrollImages(forward){
 // set scrolling distance depending on screen orientation
 function setScrollPosition() {
 	if (window.matchMedia("(orientation: portrait)").matches) {
-		let style = "top: calc(-" + currentRow + " * (100vh - 120px)); left: 0%";
+		let style = "top: calc(-" + currentPosition + " * (100vh - 120px)); left: 0%";
 		mainImageContainer.setAttribute("style", style);
 	} else {
-		let margin = -100 * currentRow;
+		let margin = -100 * currentPosition;
 		let style = "top: 0%; left:" + margin + "%;";
 		mainImageContainer.setAttribute("style", style);
 	}
@@ -83,24 +83,20 @@ function setScrollPosition() {
 // initial function call
 createImageContainers();
 
-// refresh scroll position on screen orientation change
+// refresh scroll position on screen resize
 window.onresize = function(){ setScrollPosition(); }
 
 // shuffle method from stackoverflow
 function shuffle(array) {
 	var m = array.length, t, i;
-
 	// While there remain elements to shuffle…
 	while (m) {
-
 		// Pick a remaining element…
 		i = Math.floor(Math.random() * m--);
-
 		// And swap it with the current element.
 		t = array[m];
 		array[m] = array[i];
 		array[i] = t;
 	}
-
 	return array;
 }
