@@ -92,31 +92,15 @@ h1 {
 }
 
 .image_container {
-	width: 33.33%;
+	width: calc(33% - 40px);	
 	height: 33vh;	
 	transition: all ease 0.2s;
 	text-align: center;
 	flex-shrink: 0;
-}
-
-/*
-.image_container.zoom {	
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	z-index: 9999;
-	background-color: rgba(0,0,0,0.7);
-}
-*/
-
-.image_alignment {
-	display: inline-block;
-    height: 100%;
-	vertical-align: middle;
-	width: 0px;
-	margin-left: -1;
+	padding: 0px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
 }
 
 .image {
@@ -233,7 +217,7 @@ h1 {
 		left: 0px;
 	}
 	.image_container {
-		width: 100%;
+		width: calc(100% - 40px);
 		height: calc(33.33vh - 80px);
 		padding: 20px;
 	}

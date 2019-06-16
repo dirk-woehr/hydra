@@ -34,21 +34,17 @@ var currentImage;
 
 // initial function
 function createImageContainers() {
-	// get container for images
 	// create images with containers
 	images.forEach(function(imgageData, index){
 		// container in flex element
 		let imageContainer = document.createElement("div");
 		imageContainer.setAttribute("class", "image_container");
-		// add event listener
-		// span for vertical alignment
-		let verticalAlign = document.createElement("span");
-		verticalAlign.setAttribute("class", "image_alignment");
 		// image tag
 		let imageTag = document.createElement("img");		
 		imageTag.setAttribute("class", "image");
 		imageTag.setAttribute("src", imgageData.src);
 		imageTag.setAttribute("alt", imgageData.alt);
+		// add event listener
 		imageTag.addEventListener('click', function() {
 			currentImage = this;
 			this.classList.add('zoom_out');
@@ -57,7 +53,6 @@ function createImageContainers() {
 			zoomImageContainer.classList.add('zoom');
 		});
 		// add elements to dom
-		imageContainer.appendChild(verticalAlign);
 		imageContainer.appendChild(imageTag);
 		mainImageContainer.appendChild(imageContainer);
 	});
