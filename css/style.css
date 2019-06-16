@@ -92,12 +92,12 @@ h1 {
 }
 
 .image_container {
-	width: calc(33.33% - 40px);	
+	width: calc(33.33% - 20px);	
 	height: 33vh;	
 	transition: all ease 0.2s;
 	text-align: center;
 	flex-shrink: 0;
-	padding: 0px 20px;
+	padding: 0px 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center; 
