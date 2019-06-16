@@ -26,8 +26,11 @@ images = shuffle(images);
 const totalScreens = Math.ceil(images.length / 3);
 var currentPosition = 0;
 
-// main image container for reuse
+// elements
 var mainImageContainer = document.getElementById("gallery_images");
+var zoomImageContainer = document.getElementById("image_zoom_overlay");
+var zoomImage = document.getElementById("image_zoom");
+var currentImage;
 
 // initial function
 function createImageContainers() {
@@ -38,9 +41,6 @@ function createImageContainers() {
 		let imageContainer = document.createElement("div");
 		imageContainer.setAttribute("class", "image_container");
 		// add event listener
-		imageContainer.addEventListener('click', function() {
-			this.classList.toggle('zoom');
-		});
 		// span for vertical alignment
 		let verticalAlign = document.createElement("span");
 		verticalAlign.setAttribute("class", "image_alignment");
@@ -49,11 +49,24 @@ function createImageContainers() {
 		imageTag.setAttribute("class", "image");
 		imageTag.setAttribute("src", imgageData.src);
 		imageTag.setAttribute("alt", imgageData.alt);
+		imageTag.addEventListener('click', function() {
+			currentImage = this;
+			this.classList.add('zoom_out');
+			let imageSource = this.getAttribute("src"); 
+			zoomImage.setAttribute('src', imageSource);
+			zoomImageContainer.classList.add('zoom');
+		});
 		// add elements to dom
 		imageContainer.appendChild(verticalAlign);
 		imageContainer.appendChild(imageTag);
 		mainImageContainer.appendChild(imageContainer);
 	});
+}
+
+// hide zoomed image
+function hideZoomImage() {
+	zoomImageContainer.classList.remove('zoom');
+	currentImage.classList.remove("zoom_out");
 }
 
 // calculate current position to scroll to
